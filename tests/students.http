@@ -1,0 +1,26 @@
+@url = https://zany-space-broccoli-qjprgj79wpvcx6gg-8080.app.github.dev/students
+
+POST {{url}}
+Content-Type: application/json
+
+{
+    "name": "Fernanda Ferrari",
+    "email": "fernanda@email.com",
+    "telephone": "11999999999",
+    "registrationDate": "2024-01-01"
+}
+
+###
+GET {{url}}
+
+###
+GET {{url}}/1
+
+###
+PUT {{url}}/1
+Content-Type: application/json
+
+{
+    "name": "Fernanda Ferrari Updated",
+    "registrationDate": "2023-01-01"
+}
