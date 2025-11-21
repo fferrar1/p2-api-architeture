@@ -32,6 +32,7 @@ public class Registration {
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Students student;
+    @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
