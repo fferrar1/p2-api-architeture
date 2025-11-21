@@ -53,7 +53,7 @@ public class StudentsService {
             currentStudent.setTelephone(student.telephone());
         }
         if (student.registrationDate() != null) {
-            currentStudent.setRegistrationDate(java.time.LocalDate.parse(student.registrationDate()));
+            currentStudent.setRegistrationDate(student.registrationDate());
         }
 
         return new StudentsDTO(studentsRepository.save(currentStudent));

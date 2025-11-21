@@ -43,13 +43,13 @@ public class Students {
         this.name = student.name();
         this.email = student.email();
         this.telephone = student.telephone();
-        this.registrationDate = LocalDate.parse(student.registrationDate());
+        this.registrationDate = student.registrationDate();
     }
 
     public Students(StudentsInsertDTO student) {
         this.name = student.name();
         this.email = student.email();
         this.telephone = student.telephone();
-        this.registrationDate = LocalDate.parse(student.registrationDate());
+        this.registrationDate = student.registrationDate();
     }
 }
