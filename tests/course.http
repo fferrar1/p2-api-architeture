@@ -1,0 +1,26 @@
+@url = https://zany-space-broccoli-qjprgj79wpvcx6gg-8080.app.github.dev/courses
+
+POST {{url}}
+Content-Type: application/json
+
+{
+    "name": "Big Data no Agronegócio",
+    "description": "blablablablabla",
+    "courseLoad": 2400,
+    "status": "ativo",
+    "creationTime":"2001-01-01T00:00:00"
+}
+
+###
+GET {{url}}
+
+###
+GET {{url}}/1
+
+###
+PUT {{url}}/1
+Content-Type: application/json
+
+{
+    "status": "inativo"
+}
