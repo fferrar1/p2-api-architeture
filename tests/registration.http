@@ -1,0 +1,25 @@
+@url = https://zany-space-broccoli-qjprgj79wpvcx6gg-8080.app.github.dev/registrations
+
+POST {{url}}
+Content-Type: application/json
+
+{
+    "registrationDate": "2024-01-01",
+    "status": "ATIVO",
+    "studentId": 1,
+    "courseId": 1
+}
+
+###
+GET {{url}}
+
+###
+PUT {{url}}/1
+Content-Type: application/json
+
+{
+    "registrationDate": "2023-01-01",
+    "status": "INATIVO",
+    "studentId": 1,
+    "courseId": 1
+}
