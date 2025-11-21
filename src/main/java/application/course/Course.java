@@ -39,4 +39,21 @@ public class Course {
         this.status = status;
         this.creationTime = creationTime;
     }
+
+    public Course(CourseDTO data){
+        this.id = data.id();
+        this.name = data.name();
+        this.description = data.description();
+        this.courseLoad = data.courseLoad();
+        this.status = data.status();
+        this.creationTime = data.creationTime();
+    }
+
+    public Course(CourseInsertDTO data){
+        this.name = data.name();
+        this.description = data.description();
+        this.courseLoad = data.courseLoad();
+        this.status = data.status();
+        this.creationTime = data.creationTime();
+    }
 }
