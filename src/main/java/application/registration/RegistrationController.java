@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/registrations")
 public class RegistrationController {
@@ -17,22 +22,40 @@ public class RegistrationController {
     private RegistrationService registrationService;
 
     @PostMapping
+    @Operation(summary = "Cria uma nova matrícula",
+            description = "Cria uma nova matrícula com as informações fornecidas no corpo da requisição.")
+    @ApiResponse(responseCode = "200", description = "Matrícula criada com sucesso")    
     public RegistrationDTO insert(@RequestBody RegistrationInsertDTO data) {
         return registrationService.insert(data);
     }
 
     @GetMapping
+    @Operation(summary = "Lista todas as matrículas",
+            description = "Retorna uma lista de todas as matrículas cadastradas no sistema.")
+    @ApiResponse(responseCode = "200", description = "Lista de matrículas retornada com sucesso")
     public Iterable<RegistrationDTO> getAll() {
         return registrationService.getAll();
     }
 
     @PutMapping("/{id}")
-    public RegistrationDTO update(@PathVariable long id, @RequestBody RegistrationInsertDTO data) {
+    @Operation(summary = "Atualiza uma matrícula existente",
+            description = "Atualiza as informações de uma matrícula específica com base no ID fornecido e nos dados fornecidos no corpo da requisição.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Matrícula atualizada com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Matrícula não encontrada")
+    })
+    public RegistrationDTO update(@Parameter(description = "ID da matrícula a ser atualizada") @PathVariable long id, @RequestBody RegistrationInsertDTO data) {
         return registrationService.update(id, data);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    @Operation(summary = "Remove uma matrícula",
+            description = "Remove uma matrícula específica com base no ID fornecido.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Matrícula removida com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Matrícula não encontrada")
+    })
+    public void delete(@Parameter(description = "ID da matrícula a ser removida") @PathVariable long id) {
         registrationService.delete(id);
     }
 }
